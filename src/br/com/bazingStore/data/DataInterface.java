@@ -6,8 +6,11 @@ import br.com.bazingaStore.model.Product;
 
 public interface DataInterface {
 
-	public void delete(Product Product);
-	public void update(Product Product);
-	public void save(Product Product);
+	public boolean delete(Object obj);
+	public void update(Object obj);
+	public void save(Object obj);
+	List<Object> listItens();
+	Object getItem(Object obj);
+	
 }
 

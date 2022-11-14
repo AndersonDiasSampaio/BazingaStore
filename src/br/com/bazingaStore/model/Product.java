@@ -15,8 +15,19 @@ public class Product {
 	private Category category;
 	private Sku Sku;
 
-	public Product() {
-		// TODO Auto-generated constructor stub
+	
+	public Product(Integer quantity, Double price, String department, String description, Color color, Type type,
+			br.com.bazingaStore.modelEnum.Size size, Category category, br.com.bazingaStore.modelEnum.Sku sku) {
+		super();
+		this.quantity = quantity;
+		this.price = price;
+		this.department = department;
+		this.description = description;
+		this.color = color;
+		this.type = type;
+		Size = size;
+		this.category = category;
+		Sku = sku;
 	}
 
 	public Sku getSku() {
@@ -89,6 +100,13 @@ public class Product {
 
 	public void setDepartment(String department) {
 		this.department = department;
+	}
+
+	@Override
+	public String toString() {
+		return " [quantity=" + quantity + ", price=" + price + ", department=" + department + ", description="
+				+ description + ", color=" + color + ", type=" + type + ", Size=" + Size + ", category=" + category
+				+ ", Sku=" + Sku + "]" +"\n";
 	}
 
 }
