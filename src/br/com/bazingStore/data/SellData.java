@@ -34,7 +34,6 @@ public class SellData implements DataInterface {
 
 	@Override
 	public List<Object> listItens() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
@@ -47,6 +46,9 @@ public class SellData implements DataInterface {
 		this.sell.setProduct(product);
 	}
 	
-
+	public List<Product> listProduct(){
+		
+		return this.sell.getProductList();
+	}
 
 }

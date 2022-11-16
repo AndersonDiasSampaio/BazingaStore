@@ -1,5 +1,7 @@
 package br.com.bazingaStore.service;
 
+import java.util.List;
+
 import br.com.bazingStore.data.SellData;
 import br.com.bazingStore.data.StockData;
 import br.com.bazingaStore.model.Product;
@@ -14,4 +16,8 @@ SellData sellData= new SellData();
 		sellData.addSellProduc(product);
 		return product.toString() + " " + "adicionado com sucesso ao carrinho de compras";
 	}
+	public List<Product> productIncardToSell(){
+		return sellData.listProduct();
+	}
+	
 }
