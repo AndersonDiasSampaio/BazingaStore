@@ -27,7 +27,8 @@ public class SellData implements DataInterface {
 	@Override
 	public void save(Object obj) {
 		Sell sell1 = new Sell();
-		sell1 = (Sell) obj;
+		sell1 = (Sell)obj;
+		sell1.setDateTime();
 		SellData.add(sell);
 		this.sell= null;
 	}
