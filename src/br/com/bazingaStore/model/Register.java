@@ -6,6 +6,6 @@ public class Register {
 		// TODO Auto-generated constructor stub
 		this.value=0d;
 	}
-	
+
 
 }

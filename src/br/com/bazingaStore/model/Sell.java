@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Sell {
-	private List<Product> productList = new ArrayList<Product>();
+	private List<Product> productList = new ArrayList<>();
 
 	private Double price;
 	private Integer CPF;
@@ -18,9 +18,11 @@ public class Sell {
 	public List<Product> getProductList() {
 		return productList;
 	}
-
-	public void setProduct(Product productList) {
-		this.productList.add(productList);
+	public Product getProductInTheList(int x) {
+		return productList.get(x);
+	}
+	public void setProduct(Product product) {
+		this.productList.add(product);
 	}
 
 	public Double getPrice() {
@@ -46,7 +48,13 @@ public class Sell {
 	public void setDateTime() {
 		this.dateTime = LocalDateTime.now();
 	}
-	
-	
+
+	@Override
+	public String toString() {
+		return "Sell [productList=" + productList + ", price=" + price + ", CPF=" + CPF + ", dateTime=" + dateTime
+				+ "]";
+	}
+
+
 
 }

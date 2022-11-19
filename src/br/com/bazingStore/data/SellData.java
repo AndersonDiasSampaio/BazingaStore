@@ -9,6 +9,12 @@ import br.com.bazingaStore.model.Sell;
 public class SellData implements DataInterface {
 	List<Object> SellData = new ArrayList();
 	Sell sell = new Sell();
+
+	@Override
+	public String toString() {
+		return "SellData [SellData=" + SellData + ", sell=" + sell + "]";
+	}
+
 	public SellData() {
 		// TODO Auto-generated constructor stub
 	}
@@ -24,32 +30,40 @@ public class SellData implements DataInterface {
 
 	}
 
-	@Override
-	public void save(Object obj) {
-		Sell sell1 = new Sell();
-		sell1 = (Sell)obj;
-		sell1.setDateTime();
+	
+	public void save() {
+		
+		this.sell.setDateTime();
 		SellData.add(sell);
-		this.sell= null;
+		this.sell = null;
 	}
 
 	@Override
 	public List<Object> listItens() {
-		return null;
+		return SellData;
 	}
 
 	@Override
 	public Object getItem(Object obj) {
-		// TODO Auto-generated method stub
-		return null;
+
+
+		return this.sell.getProductInTheList((int)obj);
+				//this.sell.getProductList().get((int) obj);
 	}
+
 	public void addSellProduc(Product product) {
 		this.sell.setProduct(product);
 	}
-	
-	public List<Product> listProduct(){
-		
+
+	public List<Product> listProduct() {
+
 		return this.sell.getProductList();
+	}
+
+	@Override
+	public void save(Object obj) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

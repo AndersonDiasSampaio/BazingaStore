@@ -1,6 +1,9 @@
 package br.com.bazingaStore.model;
 
-import br.com.bazingaStore.modelEnum.*;
+import br.com.bazingaStore.modelEnum.Category;
+import br.com.bazingaStore.modelEnum.Color;
+import br.com.bazingaStore.modelEnum.Size;
+import br.com.bazingaStore.modelEnum.Type;
 
 public class Product {
 
@@ -13,29 +16,39 @@ public class Product {
 	private Type type;
 	private Size Size;
 	private Category category;
-	private Sku Sku;
+	private int Sku;
+	/*
+	 * Color color, Type type, br.com.bazingaStore.modelEnum.Size size, Category
+	 * category, br.com.bazingaStore.modelEnum.Sku sku
+	 */
 
-	
-	public Product(Integer quantity, Double price, String department, String description, Color color, Type type,
-			br.com.bazingaStore.modelEnum.Size size, Category category, br.com.bazingaStore.modelEnum.Sku sku) {
+	public Product(Integer quantity, Double price, String department, String description, int sku) {
 		super();
 		this.quantity = quantity;
 		this.price = price;
 		this.department = department;
 		this.description = description;
-		this.color = color;
-		this.type = type;
-		Size = size;
-		this.category = category;
-		Sku = sku;
+		this.Sku = sku;
+		/*
+		 * this.color = color; this.type = type; Size = size; this.category = category;
+		 * Sku = sku;
+		 */
 	}
 
-	public Sku getSku() {
+	public Product(Integer quantity, Double price, int sku) {
+		this.quantity = quantity;
+		this.price = price;
+		this.Sku = sku;
+	}
+	public Product() {
+	
+	}
+	public int getSku() {
 		return Sku;
 	}
 
-	public void setSku(Sku sku) {
-		Sku = sku;
+	public void setSku(int sku) {
+		this.Sku = sku;
 	}
 
 	public Integer getQuantity() {
@@ -104,9 +117,9 @@ public class Product {
 
 	@Override
 	public String toString() {
-		return " [quantity=" + quantity + ", price=" + price + ", department=" + department + ", description="
+		return "\n" + " quantity=" + quantity + ", price=" + price + ", department=" + department + ", description="
 				+ description + ", color=" + color + ", type=" + type + ", Size=" + Size + ", category=" + category
-				+ ", Sku=" + Sku + "]" +"\n";
+				+ ", Sku=" + Sku + "" + "\n";
 	}
 
 }

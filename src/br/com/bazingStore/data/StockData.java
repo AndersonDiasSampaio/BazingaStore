@@ -14,7 +14,7 @@ public class StockData implements DataInterface {
 
 	@Override
 	public boolean delete(Object obj) {
-		
+
 		this.productList.remove((int)obj);
 		// TODO Auto-generated method stub
 		return false;
@@ -23,31 +23,35 @@ public class StockData implements DataInterface {
 
 	@Override
 	public void update(Object p) {
+		boolean b= false;
 		Product pr= (Product) p;
-		for(int x=0; x<productList.size();x++) {
-			Product product = (Product) productList.get(x);
+		for (Object element : productList) {
+			Product product = (Product) element;
 			if(pr.getSku()==product.getSku()) {
 				product.setCategory(pr.getCategory());
 				product.setColor(pr.getColor());
 				product.setDepartment(pr.getDepartment());
 				product.setDescription(pr.getDescription());
 				product.setPrice(pr.getPrice());
-				product.setQuantity(pr.getQuantity());
+				product.setQuantity(  pr.getQuantity());
 				product.setSize(pr.getSize());
 				product.setType(pr.getType());
+				b=true;
 			}
+		}if(b==false) {
+			save(p);
 		}
-		
+
 	}
 
 	@Override
 	public void save(Object Product) {
-		
+
 		// TODO Auto-generated method stub
-	this.productList.add((Product)Product);
+	this.productList.add(Product);
 
 	}
-	
+
 
 	@Override
 	public List<Object> listItens() {
@@ -57,7 +61,17 @@ public class StockData implements DataInterface {
 	@Override
 	public Object getItem(Object obj) {
 		// TODO Auto-generated method stub
-		return null;
-	} 
+		return productList.get((int)obj);
+	}
+
+
+
+	public void setProductList(List<Object> productList) {
+
+		for (Object element : productList) {
+			System.out.println((Product)element);
+			update(element);
+		}
+	}
 
 }

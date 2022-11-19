@@ -7,7 +7,6 @@ import br.com.bazingaStore.model.Product;
 import br.com.bazingaStore.modelEnum.Category;
 import br.com.bazingaStore.modelEnum.Color;
 import br.com.bazingaStore.modelEnum.Size;
-import br.com.bazingaStore.modelEnum.Sku;
 import br.com.bazingaStore.modelEnum.Type;
 
 public class StockService {
@@ -18,12 +17,13 @@ public class StockService {
 	}
 
 	public String registProduct(Integer quantity, Double price, String department, String description, Color color,
-			Type type, Size Size, Category category, Sku Sku) {
-		Product product = new Product(quantity, price, department, description, color, type, Size, category, Sku);
+			Type type, Size Size, Category category, int Sku) {
+		Product product = new Product(quantity, price, department, description,
+				Sku /* , color, type, Size, category, */);
 		List<Object> Stock = DataStock.listItens();
 		boolean isNew = true;
-		for (int x = 0; x < Stock.size(); x++) {
-			Product product2 = (Product) Stock.get(x);
+		for (Object element : Stock) {
+			Product product2 = (Product) element;
 			if (product.getSku() == product2.getSku()) {
 				product2.setCategory(product.getCategory());
 				product2.setColor(product.getColor());
@@ -38,7 +38,7 @@ public class StockService {
 			}
 
 		}
-		if (isNew == true) {
+		if (isNew) {
 			DataStock.save(product);
 		}
 		return "Produto cadastrado com sucesso!";
@@ -48,8 +48,8 @@ public class StockService {
 	public String listProduct() {
 		String exit = "Lista de produtos" + "\n";
 		List<Object> Stock = DataStock.listItens();
-		for (int x = 0; x < Stock.size(); x++) {
-			Product product = (Product) Stock.get(x);
+		for (Object element : Stock) {
+			Product product = (Product) element;
 			exit += product.toString();
 
 		}
@@ -57,7 +57,7 @@ public class StockService {
 		return exit;
 	}
 
-	public String deleteProduct(Sku a) {
+	public String deleteProduct(int a) {
 		List<Object> Stock = DataStock.listItens();
 
 		for (int x = 0; x < Stock.size(); x++) {
@@ -70,6 +70,20 @@ public class StockService {
 		}
 
 		return "Objeto deletado";
+	}
+
+	public Product getProduct(int a) {
+
+		return (Product) DataStock.getItem(a);
+	}
+
+	public List<Object> getDataStock() {
+		return this.DataStock.listItens();
+	}
+
+	public void updateStockData(List<Object> list) {
+		this.DataStock.setProductList(list);
+
 	}
 
 }
