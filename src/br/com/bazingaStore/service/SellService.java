@@ -8,16 +8,8 @@ import br.com.bazingStore.data.StockData;
 import br.com.bazingaStore.model.Product;
 
 public class SellService {
-	// StockData stock = new StockData();
-	// StockData stockTest = new StockData();
+//mudar nome de variaveis auxiliares
 	SellData sellData = new SellData();
-	/*
-	 * StockService StockService = new StockService(); StockService StockServiceAux
-	 * = new StockService();
-	 */
-	/*
-	 * public StockService getStockService() { return StockService; }
-	 */
 
 	public SellService() {
 		// TODO Auto-generated constructor stub
@@ -39,32 +31,25 @@ public class SellService {
 	public SellData getSellData() {
 		return sellData;
 	}
-
-	public String sellStockTest(StockService Stock) {
-		int a = productIncardToSell().size();
+// falta fazer um método para quando cancelar a compra
+	public String sellStockTestAndBuy(StockService Stock) {
+		int negativeCount = productIncardToSell().size();
 		for (int x = 0; x < Stock.getDataStock().size(); x++) {
 			// System.out.println(Stock.getProduct(x));
-			System.out.println("------------------------------------------------------------------------------------");
-			System.out.println("Aqui " + Stock.getProduct(x));
 			for (int y = 0; y < productIncardToSell().size(); y++) {
-				System.out.println(getSellData().getItem(y));
 				Product p8 = (Product) getSellData().getItem(y);
-				if (p8.getSku() == Stock.getProduct(x).getSku()) {
-					a--;
-					System.out.println(a);
+				if (p8.getSku() == Stock.getProduct(x).getSku()
+						&& p8.getQuantity() <= Stock.getProduct(x).getQuantity()) {
+					negativeCount--;
 
 				}
 
 			}
 
 		}
-		if (a == 0) {
+		if (negativeCount == 0) {
 			for (int x = 0; x < Stock.getDataStock().size(); x++) {
-				System.out.println(
-						"------------------------------------------------------------------------------------");
-				System.out.println("Aqui " + Stock.getProduct(x));
 				for (int y = 0; y < productIncardToSell().size(); y++) {
-					System.out.println(getSellData().getItem(y));
 					Product p8 = (Product) getSellData().getItem(y);
 					if (p8.getSku() == Stock.getProduct(x).getSku()) {
 						Stock.getProduct(x).setQuantity(Stock.getProduct(x).getQuantity() - p8.getQuantity());
@@ -73,7 +58,8 @@ public class SellService {
 
 				}
 
-			} sellData.save();
+			}
+			sellData.save();
 
 			return "Pedido realizado com sucesso";
 		} else {

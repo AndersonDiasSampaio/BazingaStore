@@ -35,7 +35,7 @@ public class SellData implements DataInterface {
 		
 		this.sell.setDateTime();
 		SellData.add(sell);
-		this.sell = null;
+		this.sell = new Sell();
 	}
 
 	@Override

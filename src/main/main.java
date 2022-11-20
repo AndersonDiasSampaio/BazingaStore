@@ -22,7 +22,6 @@ public class main {
 	public static void main(String[] args) {
 		SellService Sell = new SellService();
 		StockService Stock = new StockService();
-		StockService Stock2 = new StockService();
 
 		// ProductComunication Comunication = new ProductComunication();
 		Product p = new Product(20, 20d, 4);
@@ -40,7 +39,7 @@ public class main {
 		System.out.println();
 		System.out.println(
 				"+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
-		System.out.println(Sell.addProductCard(p, 5));
+		System.out.println(Sell.addProductCard(p, 30));
 		System.out.println(Sell.addProductCard(p2, 6));
 		System.out.println(
 				"+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
@@ -59,10 +58,17 @@ public class main {
 		
 
 		System.out.println(Stock.listProduct());
-		System.out.println(Sell.sellStockTest(Stock));
+		System.out.println(Sell.sellStockTestAndBuy(Stock));
 		System.out.println(Stock.listProduct());
-		
+		Stock.registProduct(20, 20d, "Roupa", "Calsa", Color.black, Type.Dress, Size.XL, Category.Male, 4);
+		System.out.println(Stock.listProduct());
+		System.out.println("------------------------------------------------------------------------------------");
 		System.out.println(Sell.getSellData().listItens());
+		
+		System.out.println("//////////////////////////////////////////////////////////////////////////////////////");
+
+		System.out.println(Sell.productIncardToSell());
+
 
 
 
