@@ -24,8 +24,8 @@ public class main {
 		StockService Stock = new StockService();
 
 		// ProductComunication Comunication = new ProductComunication();
-		Product p = new Product(20, 20d, 4);
-		Product p2 = new Product(20, 20d, 5);
+		Product p = new Product(20, 20d,"teste" ,4);
+		Product p2 = new Product(20, 20d,"teste" ,5);
 		Stock.registProduct(20, 20d, "Roupa", "Calsa", Color.black, Type.Dress, Size.XL, Category.Male, 4);
 		Stock.registProduct(20, 20d, "Roupa", "Calsa", Color.black, Type.Dress, Size.XL, Category.Male, 5);
 		Stock.registProduct(20, 20d, "Roupa", "Calsa", Color.black, Type.Dress, Size.XL, Category.Male, 6);
@@ -39,7 +39,7 @@ public class main {
 		System.out.println();
 		System.out.println(
 				"+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
-		System.out.println(Sell.addProductCard(p, 30));
+		System.out.println(Sell.addProductCard(p, 10));
 		System.out.println(Sell.addProductCard(p2, 6));
 		System.out.println(
 				"+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");

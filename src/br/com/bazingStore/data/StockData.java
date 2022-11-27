@@ -6,7 +6,7 @@ import java.util.List;
 import br.com.bazingaStore.model.Product;
 
 public class StockData implements DataInterface {
-	List<Object> productList= new ArrayList<>();
+	private List<Object> productList= new ArrayList<>();
 
 	public StockData() {
 		// TODO Auto-generated constructor stub
@@ -60,6 +60,7 @@ public class StockData implements DataInterface {
 
 	@Override
 	public Object getItem(Object obj) {
+		
 		// TODO Auto-generated method stub
 		return productList.get((int)obj);
 	}

@@ -8,10 +8,11 @@ public class Sell {
 	private List<Product> productList = new ArrayList<>();
 
 	private Double price;
-	private Integer CPF;
-	private LocalDateTime dateTime;
-
+	private String CPF;
+	private String dateTime;
+	private PaymentMethod paymentMethod;
 	public Sell() {
+		this.price=0d;
 		// TODO Auto-generated constructor stub
 	}
 
@@ -33,25 +34,35 @@ public class Sell {
 		this.price = price;
 	}
 
-	public Integer getCPF() {
+	public String getCPF() {
 		return CPF;
 	}
 
-	public void setCPF(Integer cPF) {
+	public void setCPF(String cPF) {
 		CPF = cPF;
 	}
 
-	public LocalDateTime getDateTime() {
+	public String getDateTime() {
 		return dateTime;
 	}
 
+	public PaymentMethod getPaymentMethod() {
+		return paymentMethod;
+	}
+
+	public void setPaymentMethod(PaymentMethod paymentMethod) {
+		this.paymentMethod = paymentMethod;
+	}
+
 	public void setDateTime() {
-		this.dateTime = LocalDateTime.now();
+		LocalDateTime dateTime2 = LocalDateTime.now();
+		String a= dateTime2.toString();
+		dateTime = a.substring(0, 10);
 	}
 
 	@Override
 	public String toString() {
-		return "Sell [productList=" + productList + ", price=" + price + ", CPF=" + CPF + ", dateTime=" + dateTime
+		return "Histórico de Vendas [ Produtos:" + productList + ", price=" + price + ", CPF=" + CPF + ", dateTime=" + dateTime
 				+ "]";
 	}
 

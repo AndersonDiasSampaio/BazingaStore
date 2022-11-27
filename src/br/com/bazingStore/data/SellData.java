@@ -7,8 +7,8 @@ import br.com.bazingaStore.model.Product;
 import br.com.bazingaStore.model.Sell;
 
 public class SellData implements DataInterface {
-	List<Object> SellData = new ArrayList();
-	Sell sell = new Sell();
+	private List<Object> SellData = new ArrayList();
+	private Sell sell = new Sell();
 
 	@Override
 	public String toString() {
@@ -31,10 +31,13 @@ public class SellData implements DataInterface {
 	}
 
 	
-	public void save() {
+	public void save(double b) {
 		
 		this.sell.setDateTime();
+		this.sell.setPrice(b);
+		
 		SellData.add(sell);
+		
 		this.sell = new Sell();
 	}
 
@@ -51,9 +54,9 @@ public class SellData implements DataInterface {
 				//this.sell.getProductList().get((int) obj);
 	}
 
-	public void addSellProduc(Product product) {
+/*	public void addSellProduc(Product product) {
 		this.sell.setProduct(product);
-	}
+	}*/
 
 	public List<Product> listProduct() {
 
@@ -62,8 +65,13 @@ public class SellData implements DataInterface {
 
 	@Override
 	public void save(Object obj) {
+		Product product =  (Product) obj;
 		// TODO Auto-generated method stub
+		this.sell.setProduct(product);
 		
+	}
+	public void setSellCPF(String a) {
+		this.sell.setCPF(a);
 	}
 
 }

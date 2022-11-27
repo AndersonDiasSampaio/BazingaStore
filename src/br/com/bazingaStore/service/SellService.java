@@ -19,7 +19,8 @@ public class SellService {
 		Product p = new Product();
 		p = product;
 		p.setQuantity(quantity);
-		sellData.addSellProduc(p);
+		Object p2 = p;
+		sellData.save(p2);
 
 		return "Adicionado com sucesso ao carrinho de compras: " + "\n" + product.toString();
 	}
@@ -31,13 +32,25 @@ public class SellService {
 	public SellData getSellData() {
 		return sellData;
 	}
+
+	public void setPaymentMethod(String a, int b) {
+
+	}
+
+	public void setAndVerifyCPF(String a) {
+	this.sellData.setSellCPF(a);
+	}
+
 // falta fazer um método para quando cancelar a compra
 	public String sellStockTestAndBuy(StockService Stock) {
+		double priceToBil=0d;
 		int negativeCount = productIncardToSell().size();
 		for (int x = 0; x < Stock.getDataStock().size(); x++) {
-			// System.out.println(Stock.getProduct(x));
+			// System.out.println("TEste +++" +Stock.getDataStock());
 			for (int y = 0; y < productIncardToSell().size(); y++) {
 				Product p8 = (Product) getSellData().getItem(y);
+				// System.out.println("TEste +++" +p8);
+
 				if (p8.getSku() == Stock.getProduct(x).getSku()
 						&& p8.getQuantity() <= Stock.getProduct(x).getQuantity()) {
 					negativeCount--;
@@ -53,13 +66,16 @@ public class SellService {
 					Product p8 = (Product) getSellData().getItem(y);
 					if (p8.getSku() == Stock.getProduct(x).getSku()) {
 						Stock.getProduct(x).setQuantity(Stock.getProduct(x).getQuantity() - p8.getQuantity());
+						priceToBil= (p8.getPrice()*p8.getQuantity())+priceToBil;
 
 					}
 
 				}
 
 			}
-			sellData.save();
+			sellData.save(priceToBil);
+			System.out.println(sellData.listItens());
+
 
 			return "Pedido realizado com sucesso";
 		} else {
@@ -67,40 +83,5 @@ public class SellService {
 		}
 
 	}
-
-	/*
-	 * public String testEstoque() { for (int y = 0; y <
-	 * sellData.listProduct().size(); y++) { System.out.println("passou"); for (int
-	 * x = 0; x < stockTest.listItens().size(); x++) {
-	 * System.out.println("Produto 2" + stockTest.getItem(x)); Product product2 =
-	 * (Product) stockTest.getItem(x); System.out.println("passou");
-	 * System.out.println("Produto 1" + stockTest.getItem(x));
-	 * 
-	 * Product product1 = (Product) sellData.getItem(y);
-	 * System.out.println("Produto 1" + stockTest.getItem(x)); if (product1.getSku()
-	 * == product2.getSku()) { System.out.println( product2.getQuantity() -
-	 * product1.getQuantity());
-	 * 
-	 * if (product2.getQuantity() >= product1.getQuantity()) {
-	 * product2.setQuantity(product2.getQuantity() - product1.getQuantity());
-	 * System.out.println( product2.getQuantity() - product1.getQuantity());
-	 * stockTest.update(product2); } else {
-	 * this.stockTest.setProductList(this.stock.listItens()); return
-	 * "Compra cancelada o produto: " + product1.getDescription() +
-	 * " nao possui quantidade suficiente no estoque " +
-	 * "a quantidade suficente é: " + product2.getQuantity(); }
-	 * 
-	 * } } } this.stock.setProductList(this.stockTest.listItens());
-	 * 
-	 * return "Compra realizada com sucesso"; }
-	 * 
-	 * public StockData getStock() { return stock; }
-	 */
-	/*
-	 * public void setStock(List<Object> stock) { this.stock.setProductList(stock);
-	 * this.stockTest.setProductList(stock);
-	 * 
-	 * }
-	 */
 
 }

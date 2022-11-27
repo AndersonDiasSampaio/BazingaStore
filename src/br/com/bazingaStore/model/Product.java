@@ -35,10 +35,11 @@ public class Product {
 		 */
 	}
 
-	public Product(Integer quantity, Double price, int sku) {
+	public Product(Integer quantity, Double price, String description, int Sku) {
 		this.quantity = quantity;
 		this.price = price;
-		this.Sku = sku;
+		this.Sku = Sku;
+		this.description=description;
 	}
 	public Product() {
 	
