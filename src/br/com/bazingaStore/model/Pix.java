@@ -1,15 +1,21 @@
 package br.com.bazingaStore.model;
 
 public class Pix implements PaymentMethod {
-	String pix;
+	String codepix;
+	
+
 	public Pix() {
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override
 	public void TypeOfPayment(String value) {
 		// TODO Auto-generated method stub
-		this.pix=value;
+		this.codepix=value;
 	}
+	@Override
+	public String toString() {
+		return "Pix [Chave PIX=" + codepix + "]";
+	}
+
 
 }

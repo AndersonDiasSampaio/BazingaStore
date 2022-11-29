@@ -63,7 +63,7 @@ public class Sell {
 	@Override
 	public String toString() {
 		return "Histórico de Vendas [ Produtos:" + productList + ", price=" + price + ", CPF=" + CPF + ", dateTime=" + dateTime
-				+ "]";
+				+"Metodo de Pagamento: "+ paymentMethod+"]";
 	}
 
 

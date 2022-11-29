@@ -5,11 +5,15 @@ import java.util.List;
 
 import br.com.bazingStore.data.SellData;
 import br.com.bazingStore.data.StockData;
+import br.com.bazingaStore.model.Cash;
+import br.com.bazingaStore.model.CredCard;
+import br.com.bazingaStore.model.Debit;
+import br.com.bazingaStore.model.Pix;
 import br.com.bazingaStore.model.Product;
 
 public class SellService {
 //mudar nome de variaveis auxiliares
-	SellData sellData = new SellData();
+	private SellData sellData = new SellData();
 
 	public SellService() {
 		// TODO Auto-generated constructor stub
@@ -33,17 +37,39 @@ public class SellService {
 		return sellData;
 	}
 
-	public void setPaymentMethod(String a, int b) {
+	public void setPaymentMethod(String method, String Data) {
+		
+		if (method.equals("PIX")) {
+			Pix a = new Pix();
+			a.TypeOfPayment(Data);
+			this.sellData.setPayment(a);
+
+		} else if (method.equals("CREDCARD")) {
+			Cash a = new Cash();
+			a.TypeOfPayment(Data);
+			this.sellData.setPayment(a);
+
+		} else if (method.equals("CASH")) {
+			CredCard a = new CredCard();
+			a.TypeOfPayment(Data);
+			this.sellData.setPayment(a);
+		} else if (method.equals("DEBIT")) {
+			Debit a = new Debit();
+			a.TypeOfPayment(Data);
+			this.sellData.setPayment(a);
+		}
+	
 
 	}
 
 	public void setAndVerifyCPF(String a) {
-	this.sellData.setSellCPF(a);
+		this.sellData.setSellCPF(a);
 	}
 
 // falta fazer um método para quando cancelar a compra
-	public String sellStockTestAndBuy(StockService Stock) {
-		double priceToBil=0d;
+	public String sellStockTestAndBuy(StockService Stock, CashRegisterService cash) {
+		double priceToBil = 0d;
+		Object obj;
 		int negativeCount = productIncardToSell().size();
 		for (int x = 0; x < Stock.getDataStock().size(); x++) {
 			// System.out.println("TEste +++" +Stock.getDataStock());
@@ -66,16 +92,16 @@ public class SellService {
 					Product p8 = (Product) getSellData().getItem(y);
 					if (p8.getSku() == Stock.getProduct(x).getSku()) {
 						Stock.getProduct(x).setQuantity(Stock.getProduct(x).getQuantity() - p8.getQuantity());
-						priceToBil= (p8.getPrice()*p8.getQuantity())+priceToBil;
+						priceToBil = (p8.getPrice() * p8.getQuantity()) + priceToBil;
 
 					}
 
 				}
 
 			}
+			cash.setCashRegisterData(priceToBil);
 			sellData.save(priceToBil);
 			System.out.println(sellData.listItens());
-
 
 			return "Pedido realizado com sucesso";
 		} else {

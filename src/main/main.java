@@ -14,7 +14,7 @@ import br.com.bazingaStore.service.StockService;
 import br.com.bazingaStore.modelEnum.*;
 
 public class main {
-
+/*
 	public main() {
 		// TODO Auto-generated constructor stub
 	}
@@ -73,5 +73,5 @@ public class main {
 
 
 	}
-
+*/
 }
