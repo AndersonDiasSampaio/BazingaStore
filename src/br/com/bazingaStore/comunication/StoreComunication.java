@@ -13,6 +13,14 @@ public class StoreComunication {
 	Double price;
 	int sku;
 
+	public void paySystemLn() {
+		System.out.println("Digite o metodo de pagamento");
+		System.out.println("Cash");
+		System.out.println("Debit");
+		System.out.println("CredCard");
+		System.out.println("Pix");
+	}
+
 	public StoreComunication() {
 		boolean x = true;
 		SellService Sell = new SellService();
@@ -24,11 +32,11 @@ public class StoreComunication {
 
 		while (x == true) {
 			System.out.println("Bem vindo ao Sistema de Gerenciamento e venda de Roupas Bazinga");
-			System.out.println("Para Adicionar Roupas ao estoque Digite 1");
-			System.out.println("Para Verificar Stock Digite 2");
-			System.out.println("Para Venda de Roupas Digite 3");
-			System.out.println("Digite 4 para ver o caixa");
-			System.out.println("Digite 5 para sair");
+			System.out.println("1 - Para Adicionar Roupas ao estoque");
+			System.out.println("2 - Para Verificar Stock ");
+			System.out.println("3 - Para Venda de Roupas ");
+			System.out.println("4 - para ver o caixa");
+			System.out.println("5 - para sair");
 
 			value = entry.nextInt();
 			if (value == 1) {
@@ -49,11 +57,11 @@ public class StoreComunication {
 			} else if (value == 3) {
 				boolean y = true;
 				while (y == true) {
-					System.out.println("Digite 1 para listar Roupas");
-					System.out.println("Digite 2  selecionar Roupas");
-					System.out.println("Digite 3 para Finalizar a compra");
-					System.out.println("Digite 4 para cancelar a compra");
-					System.out.println("Digite 5 para voltar ao menu anterior");
+					System.out.println("1 - para listar Roupas");
+					System.out.println("2 - selecionar Roupas");
+					System.out.println("3 - para Finalizar a compra");
+					System.out.println("4 - para cancelar a compra");
+					System.out.println("5 - para voltar ao menu anterior");
 
 					value = entry.nextInt();
 					if (value == 1) {
@@ -77,18 +85,20 @@ public class StoreComunication {
 							System.out.println("Digiteo valor do CPF");
 							text = entry.next();
 							Sell.setAndVerifyCPF(text);
-							// Editar para todos os metodos de pagamento
-							System.out.println("Digite o metodo de pagamento");
-							System.out.println("Cash");
-							System.out.println("Debit");
-							System.out.println("CredCard");
-							System.out.println("Pix");
+							paySystemLn();
 							text = entry.next();
 							System.out.println("Digite os dados do metodo de pagemento");
 							String text2 = entry.next();
+							text2=text2.toUpperCase();
+							System.out.println(text2);
 
-							Sell.setPaymentMethod(text.toUpperCase(), text2.toUpperCase());
+							Sell.setPaymentMethod(text2.toUpperCase(), text.toUpperCase());
 						} else if (value == 2) {
+							Sell.setAndVerifyCPF("Nao informado");
+							paySystemLn();
+							text = entry.next();
+							System.out.println("Digite os dados do metodo de pagemento");
+							String text2 = entry.next();
 
 						} else {
 							System.out.println("Valor invalido");
@@ -96,6 +106,8 @@ public class StoreComunication {
 
 						System.out.println(Sell.sellStockTestAndBuy(Stock, cash));
 					} else if (value == 4) {
+						System.out.println("Cancelando sua compra");
+						Sell.cancel();
 					}
 					if (value == 5) {
 						y = false;

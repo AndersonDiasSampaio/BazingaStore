@@ -128,9 +128,9 @@ public class StockService {
 		return this.DataStock.listItens();
 	}
 
-	public void updateStockData(List<Object> list) {
+	/*public void updateStockData(List<Object> list) {
 		this.DataStock.setProductList(list);
 
-	}
+	}*/
 
 }

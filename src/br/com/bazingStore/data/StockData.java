@@ -67,12 +67,12 @@ public class StockData implements DataInterface {
 
 
 //Ver porque acho que deve ir pra o Service
-	public void setProductList(List<Object> productList) {
+	/*public void setProductList(List<Object> productList) {
 
 		for (Object element : productList) {
 			System.out.println((Product)element);
 			update(element);
 		}
-	}
+	}*/
 
 }

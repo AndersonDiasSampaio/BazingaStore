@@ -45,7 +45,9 @@ public class SellData implements DataInterface {
 		this.sell.setProduct(product);
 
 	}
-
+public void refrestcard() {
+	this.sell=new Sell();
+}
 	public void save(double b) {
 
 		this.sell.setDateTime();

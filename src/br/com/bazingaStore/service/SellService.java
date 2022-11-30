@@ -22,11 +22,14 @@ public class SellService {
 	public String addProductCard(Product product, int quantity) {
 		Product p = new Product();
 		p = product;
+		if(p.getSku()==0) {
+			return "Nao foi possivel adicionar ao carrinho de compras";
+		}else {
 		p.setQuantity(quantity);
 		Object p2 = p;
 		sellData.save(p2);
 
-		return "Adicionado com sucesso ao carrinho de compras: " + "\n" + product.toString();
+		return "Adicionado com sucesso ao carrinho de compras: " + "\n" + product.toString();}
 	}
 
 	public List<Product> productIncardToSell() {
@@ -61,7 +64,10 @@ public class SellService {
 	
 
 	}
+	public void cancel() {
+		sellData.refrestcard();
 
+	}
 	public void setAndVerifyCPF(String a) {
 		this.sellData.setSellCPF(a);
 	}
@@ -105,6 +111,7 @@ public class SellService {
 
 			return "Pedido realizado com sucesso";
 		} else {
+			sellData.refrestcard();
 			return "Pedido cancelado, produtos do carrinho exedem a quantidade do estoque";
 		}
 
