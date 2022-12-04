@@ -89,16 +89,17 @@ public class StoreComunication {
 							text = entry.next();
 							System.out.println("Digite os dados do metodo de pagemento");
 							String text2 = entry.next();
-							text2=text2.toUpperCase();
 							System.out.println(text2);
 
-							Sell.setPaymentMethod(text2.toUpperCase(), text.toUpperCase());
+							Sell.setPaymentMethod(text.toUpperCase(), text2.toUpperCase());
 						} else if (value == 2) {
 							Sell.setAndVerifyCPF("Nao informado");
 							paySystemLn();
 							text = entry.next();
 							System.out.println("Digite os dados do metodo de pagemento");
 							String text2 = entry.next();
+							System.out.println(text2);
+							Sell.setPaymentMethod(text.toUpperCase(), text2.toUpperCase());
 
 						} else {
 							System.out.println("Valor invalido");
@@ -124,7 +125,8 @@ public class StoreComunication {
 			} else if (value == 5) {
 				System.out.println("Desligando os Sistemas");
 				x = false;
-			} else {
+			} 
+			else {
 				System.out.println("Digite o valor correto");
 			}
 

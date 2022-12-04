@@ -47,12 +47,12 @@ public class SellService {
 			a.TypeOfPayment(Data);
 			this.sellData.setPayment(a);
 
-		} else if (method.equals("CREDCARD")) {
+		} else if (method.equals("CASH")) {
 			Cash a = new Cash();
 			a.TypeOfPayment(Data);
 			this.sellData.setPayment(a);
 
-		} else if (method.equals("CASH")) {
+		} else if (method.equals("CREDCARD")) {
 			CredCard a = new CredCard();
 			a.TypeOfPayment(Data);
 			this.sellData.setPayment(a);

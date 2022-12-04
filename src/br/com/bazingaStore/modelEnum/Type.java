@@ -1,5 +1,48 @@
 package br.com.bazingaStore.modelEnum;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public enum Type {
-	Shirt, Shorts, Jeans, Pants, Socks, Skirt, Dress, Blouse;
+	BLUSA("BLU", 1),
+	CALSA("CAL", 2),
+	CAMISA("CAM", 3),
+	MEIA("MEI",4);
+	
+	private final static Map<String, Type> map= new HashMap<>();
+	private final static Map<Integer, Type> map2= new HashMap<>();
+
+	static {
+		for(Type type: Type.values()) {
+			map.put(type.getCod(), type);
+		}
+	}
+	static {
+		for(Type type: Type.values()) {
+			map2.put(type.getSkuCod(), type);
+		}
+	}
+	
+	String cod;
+	int skuCod;
+	
+	Type(String cod, int skuCod) {
+	this.cod = cod;
+	this.skuCod= skuCod;
+	}
+
+	public String getCod() {
+		return cod;
+	}
+
+	public int getSkuCod() {
+		return skuCod;
+	}
+	
+	public static Type getType(String a) {
+		return map.get(a);
+	}
+	public static Type getType(int a) {
+		return map2.get(a);
+	}
 }
