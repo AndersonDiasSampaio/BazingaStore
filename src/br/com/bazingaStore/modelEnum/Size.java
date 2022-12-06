@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public enum Size {
-	PEQUENO("P", 1), MEDIO("M", 2), GRANDE("G", 3), EXTRAGRANDE("GG", 4);
+	PEQUENO("P", 31), MEDIO("M", 32), GRANDE("G", 33), EXTRAGRANDE("GG", 34);
 
 	private int skuCod;
 	private String cod;

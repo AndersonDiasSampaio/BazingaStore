@@ -26,7 +26,7 @@ public class Product {
 		super();
 		this.quantity = quantity;
 		this.price = price;
-		this.department = department;
+		this.department = department; //todos colocar como Enum
 		this.description = description;
 		this.Sku = sku;
 		/*
@@ -35,11 +35,33 @@ public class Product {
 		 */
 	}
 
-	public Product(Integer quantity, Double price, String description, int Sku) {
+	public Product(Integer quantity, Double price, String description, Integer Sku) {
 		this.quantity = quantity;
 		this.price = price;
 		this.Sku = Sku;
 		this.description=description;
+		String k = Sku.toString();
+		if(k.length()==8) {
+		String a = Sku.toString();
+		String b= Sku.toString();
+		String c=  Sku.toString();
+		String d=  Sku.toString();
+		a=a.substring(0,2);
+		b=b.substring(2, 4);
+		c=c.substring(4, 6);
+		d=d.substring(6,8);
+		int a1=Integer.parseInt(a);
+		int b1=Integer.parseInt(b);
+		int c1=Integer.parseInt(c);
+		int d1=Integer.parseInt(d);
+		Type type= Type.getType(a1);
+		Color color = Color.getType(b1);
+		Size size= Size.getType(c1);
+ 
+		setType(type);
+		setColor(color);
+		setSize(size);}
+		
 	}
 	public Product() {
 	

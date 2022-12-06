@@ -4,10 +4,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 public enum Type {
-	BLUSA("BLU", 1),
-	CALSA("CAL", 2),
-	CAMISA("CAM", 3),
-	MEIA("MEI",4);
+	BLUSA("BLU", 11),
+	CALSA("CAL", 12),
+	CAMISA("CAM", 13),
+	MEIA("MEI",14);
 	
 	private final static Map<String, Type> map= new HashMap<>();
 	private final static Map<Integer, Type> map2= new HashMap<>();

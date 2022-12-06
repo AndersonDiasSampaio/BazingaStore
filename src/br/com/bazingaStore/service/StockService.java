@@ -44,7 +44,7 @@ public class StockService {
 		return "Produto cadastrado com sucesso!";
 
 	}
-	public String registProduct(Integer quantity, Double price, String description, int Sku) {
+	public String registProduct(Integer quantity, Double price, String description, Integer Sku) {
 		Product product = new Product(quantity, price, description, Sku);
 		List<Object> Stock = DataStock.listItens();
 		boolean isNew = true;
