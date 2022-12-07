@@ -22,14 +22,18 @@ public class SellService {
 	public String addProductCard(Product product, int quantity) {
 		Product p = new Product();
 		p = product;
-		if(p.getSku()==0) {
-			return "Nao foi possivel adicionar ao carrinho de compras";
-		}else {
-		p.setQuantity(quantity);
-		Object p2 = p;
-		sellData.save(p2);
 
-		return "Adicionado com sucesso ao carrinho de compras: " + "\n" + product.toString();}
+		if (p.getSku() == 0) {
+			return "Nao foi possivel adicionar ao carrinho de compras";
+		} else {
+
+			
+			p.setQuantity(quantity);
+			Object p2 = p;
+			sellData.update(p2);
+
+			return "Adicionado com sucesso ao carrinho de compras: " + "\n" + p2.toString();
+		}
 	}
 
 	public List<Product> productIncardToSell() {
@@ -39,15 +43,17 @@ public class SellService {
 	public SellData getSellData() {
 		return sellData;
 	}
-
+	public List<Object>  getSellDataList() {
+		return sellData.listItens();
+	}
 	public void setPaymentMethod(String method, String Data) {
-		
+
 		if (method.equals("PIX")) {
 			Pix a = new Pix();
 			a.TypeOfPayment(Data);
 			this.sellData.setPayment(a);
 
-		} else if (method.equals("CASH")) {
+		} else if (method.equals("DINHEIRO")) {
 			Cash a = new Cash();
 			a.TypeOfPayment(Data);
 			this.sellData.setPayment(a);
@@ -56,18 +62,19 @@ public class SellService {
 			CredCard a = new CredCard();
 			a.TypeOfPayment(Data);
 			this.sellData.setPayment(a);
-		} else if (method.equals("DEBIT")) {
+		} else if (method.equals("DEBITO")) {
 			Debit a = new Debit();
 			a.TypeOfPayment(Data);
 			this.sellData.setPayment(a);
 		}
-	
 
 	}
+
 	public void cancel() {
 		sellData.refrestcard();
 
 	}
+
 	public void setAndVerifyCPF(String a) {
 		this.sellData.setSellCPF(a);
 	}
@@ -77,43 +84,50 @@ public class SellService {
 		double priceToBil = 0d;
 		Object obj;
 		int negativeCount = productIncardToSell().size();
-		for (int x = 0; x < Stock.getDataStock().size(); x++) {
-			// System.out.println("TEste +++" +Stock.getDataStock());
-			for (int y = 0; y < productIncardToSell().size(); y++) {
-				Product p8 = (Product) getSellData().getItem(y);
-				// System.out.println("TEste +++" +p8);
-
-				if (p8.getSku() == Stock.getProduct(x).getSku()
-						&& p8.getQuantity() <= Stock.getProduct(x).getQuantity()) {
-					negativeCount--;
-
-				}
-
-			}
-
-		}
-		if (negativeCount == 0) {
+		if(sellData.listProduct().size()>0) {
 			for (int x = 0; x < Stock.getDataStock().size(); x++) {
+				// System.out.println("TEste +++" +Stock.getDataStock());
 				for (int y = 0; y < productIncardToSell().size(); y++) {
 					Product p8 = (Product) getSellData().getItem(y);
-					if (p8.getSku() == Stock.getProduct(x).getSku()) {
-						Stock.getProduct(x).setQuantity(Stock.getProduct(x).getQuantity() - p8.getQuantity());
-						priceToBil = (p8.getPrice() * p8.getQuantity()) + priceToBil;
+					// System.out.println("TEste +++" +p8);
+
+					if (p8.getSku() == Stock.getProduct(x).getSku()
+							&& p8.getQuantity() <= Stock.getProduct(x).getQuantity()) {
+						negativeCount--;
 
 					}
 
 				}
 
 			}
-			cash.setCashRegisterData(priceToBil);
-			sellData.save(priceToBil);
-			System.out.println(sellData.listItens());
+			if (negativeCount == 0) {
+				for (int x = 0; x < Stock.getDataStock().size(); x++) {
+					for (int y = 0; y < productIncardToSell().size(); y++) {
+						Product p8 = (Product) getSellData().getItem(y);
+						if (p8.getSku() == Stock.getProduct(x).getSku()) {
+							Stock.getProduct(x).setQuantity(Stock.getProduct(x).getQuantity() - p8.getQuantity());
+							priceToBil = (p8.getPrice() * p8.getQuantity()) + priceToBil;
 
-			return "Pedido realizado com sucesso";
-		} else {
-			sellData.refrestcard();
-			return "Pedido cancelado, produtos do carrinho exedem a quantidade do estoque";
+						}
+
+					}
+
+				}
+				// cash.setCashRegisterData(priceToBil);
+				sellData.save(priceToBil);
+				System.out.println(sellData.listItens());
+				sellData.refrestcard();
+
+
+				return "Pedido realizado com sucesso";
+			} else {
+				sellData.refrestcard();
+				return "Pedido cancelado, produtos do carrinho exedem a quantidade do estoque";
+			}
+		}else {
+			return "Pedido cancelado, carinho vazio";
 		}
+		
 
 	}
 

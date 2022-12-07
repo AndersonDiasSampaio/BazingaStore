@@ -25,7 +25,7 @@ public class ProductComunication {
 	public ProductComunication() {
 		// TODO Auto-generated constructor stub
 	}
-
+/*
 	public void addProductComunication() {
 		System.out.println("Digite os seguintes dados para cadastro do produto:");
 		System.out.println("Quantidade");
@@ -38,18 +38,13 @@ public class ProductComunication {
 		this.description = this.Sc.next();
 		System.out.println("SKU");
 		Sku = this.Sc.nextInt();
-		/*
-		 * System.out.println("Cor"); this.color = Color.valueOf(Sc.next());
-		 * System.out.println("Type"); this.type = Type.valueOf(Sc.next());
-		 * System.out.println("Size"); this.category = Category.valueOf(Sc.next());
-		 *
-		 */
+		
 		Product product = new Product(quantity, price, department, description,
-				Sku /* , color, type, Size, category, Sku */);
+				Sku /* , color, type, Size, category, Sku );
 
 		this.productService.registProduct(quantity, price, department, description, null, null, null, category, Sku);
 	}
-
+*/
 	/*public List<Object> returnStockService() {
 		return this.productService.getDataStock().listItens();
 	}

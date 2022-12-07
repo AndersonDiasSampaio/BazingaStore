@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public enum Color {
-PRETA("PR", 21), VERMELHA("VER", 22), AZUL("AZU", 23), VERDE("VER", 24);
+PRETA("PR", 11), VERMELHA("VER", 12), AZUL("AZU", 13), VERDE("VER", 14);
 
 private String cod;
 private int skuCod;

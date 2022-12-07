@@ -62,8 +62,8 @@ public class Sell {
 
 	@Override
 	public String toString() {
-		return "Histórico de Vendas [ Produtos:" + productList + ", price=" + price + ", CPF=" + CPF + ", dateTime=" + dateTime
-				+"Metodo de Pagamento: "+ paymentMethod+"]";
+		return "Cupom Fiscal [ Produtos:" + productList + ", Preco=" + price + ", CPF: " + CPF + ", Data da Compra: " + dateTime
+				+", Metodo de Pagamento: "+ paymentMethod+"]";
 	}
 
 

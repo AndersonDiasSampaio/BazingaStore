@@ -21,7 +21,7 @@ public class Debit implements PaymentMethod {
 
 	@Override
 	public String toString() {
-		return " Debito [Numero do cartao de credito=" + NumberOfCredCard + "]";
+		return " Debito [Numero do cartao de debito=" + NumberOfCredCard + "]";
 	}
 	
 

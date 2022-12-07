@@ -5,7 +5,7 @@ import java.util.Map;
 
 public enum Type {
 	BLUSA("BLU", 11),
-	CALSA("CAL", 12),
+	CALCA("CAL", 12),
 	CAMISA("CAM", 13),
 	MEIA("MEI",14);
 	

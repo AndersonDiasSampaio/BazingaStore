@@ -16,59 +16,40 @@ public class StockService {
 		// TODO Auto-generated constructor stub
 	}
 
-	public String registProduct(Integer quantity, Double price, String department, String description, Color color,
-			Type type, Size Size, Category category, int Sku) {
-		Product product = new Product(quantity, price, department, description,
-				Sku /* , color, type, Size, category, */);
-		List<Object> Stock = DataStock.listItens();
-		boolean isNew = true;
-		for (Object element : Stock) {
-			Product product2 = (Product) element;
-			if (product.getSku() == product2.getSku()) {
-				product2.setCategory(product.getCategory());
-				product2.setColor(product.getColor());
-				product2.setDepartment(product.getDepartment());
-				product2.setDescription(product.getDescription());
-				product2.setPrice(product.getPrice());
-				product2.setQuantity(product.getQuantity() + product2.getQuantity());
-				product2.setSize(product.getSize());
-				product2.setType(product.getType());
-				DataStock.update(product2);
-				isNew = false;
-			}
-
-		}
-		if (isNew) {
-			DataStock.save(product);
-		}
-		return "Produto cadastrado com sucesso!";
-
-	}
+	
 	public String registProduct(Integer quantity, Double price, String description, Integer Sku) {
-		Product product = new Product(quantity, price, description, Sku);
-		List<Object> Stock = DataStock.listItens();
-		boolean isNew = true;
-		for (Object element : Stock) {
-			Product product2 = (Product) element;
-			if (product.getSku() == product2.getSku()) {
-				product2.setCategory(product.getCategory());
-				product2.setColor(product.getColor());
-				product2.setDepartment(product.getDepartment());
-				product2.setDescription(product.getDescription());
-				product2.setPrice(product.getPrice());
-				product2.setQuantity(product.getQuantity() + product2.getQuantity());
-				product2.setSize(product.getSize());
-				product2.setType(product.getType());
-				DataStock.update(product2);
-				isNew = false;
+		String a=Sku.toString();
+		
+		if(a.length()==10) {
+			Product product = new Product(quantity, price, description, Sku);
+			List<Object> Stock = DataStock.listItens();
+			boolean isNew = true;
+			for (Object element : Stock) {
+				Product product2 = (Product) element;
+				if (product.getSku() == product2.getSku()) {
+					product2.setCategory(product.getCategory());
+					product2.setColor(product.getColor());
+					product2.setDepartment(product.getDepartment());
+					product2.setDescription(product.getDescription());
+					product2.setPrice(product.getPrice());
+					product2.setQuantity(product.getQuantity() + product2.getQuantity());
+					product2.setSize(product.getSize());
+					product2.setType(product.getType());
+					DataStock.update(product2);
+					isNew = false;
+				}
+
 			}
+			if (isNew) {
+				DataStock.save(product);
+			}
+			return "Produto cadastrado com sucesso!";
 
+		}else {
+			return "SKU menor que o permitido, produto nao cadastrado";
 		}
-		if (isNew) {
-			DataStock.save(product);
-		}
-		return "Produto cadastrado com sucesso!";
-
+		
+		
 	}
 	public String listProduct() {
 		String exit = "Lista de produtos" + "\n";
@@ -128,9 +109,6 @@ public class StockService {
 		return this.DataStock.listItens();
 	}
 
-	/*public void updateStockData(List<Object> list) {
-		this.DataStock.setProductList(list);
 
-	}*/
 
 }
