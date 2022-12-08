@@ -78,23 +78,24 @@ public class SellData implements DataInterface {
 
 	}
 
-	public void save(double b, String a, PaymentMethod c ) {
-		this.sell.setPaymentMethod(c);
+	public void save(double price, String CPF, String PaymentMethod, String valueBancaryData ) {
+		this.sell.setPaymentMethod(PaymentMethod, valueBancaryData);
 		this.sell.setDateTime();
-		this.sell.setCPF(a);
-		this.sell.setPrice(b);
+		this.sell.setCPF(CPF);
+		this.sell.setPrice(price);
 
 		sellData.add(sell);
 
 	}
+	
 	public void setSellCPF(String a) {
 		this.sell.setCPF(a);
 	}
 
-	public void setPayment(PaymentMethod a) {
+	/*public void setPayment(PaymentMethod a) {
 		this.sell.setPaymentMethod(a);
 
-	}
+	}*/
 	public List<Product> listProduct() {
 
 		return this.sell.getProductList();

@@ -10,6 +10,7 @@ import br.com.bazingaStore.modelEnum.Size;
 import br.com.bazingaStore.modelEnum.Type;
 
 public class StockService {
+	// colocar tudo private e testar
 	StockData DataStock = new StockData();
 
 	public StockService() {

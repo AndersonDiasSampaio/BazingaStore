@@ -19,7 +19,7 @@ public class CredCard implements PaymentMethod {
 
 	@Override
 	public String toString() {
-		return " CredCard [Numero do Cartao=" + NumberOfCredCard + "]";
+		return " CredCard [Dados do cartao=" + NumberOfCredCard + "]";
 	}
 	
 

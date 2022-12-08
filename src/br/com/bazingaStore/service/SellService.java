@@ -10,6 +10,7 @@ import br.com.bazingaStore.model.CredCard;
 import br.com.bazingaStore.model.Debit;
 import br.com.bazingaStore.model.Pix;
 import br.com.bazingaStore.model.Product;
+import br.com.bazingaStore.model.Sell;
 
 public class SellService {
 //mudar nome de variaveis auxiliares
@@ -46,7 +47,8 @@ public class SellService {
 	public List<Object>  getSellDataList() {
 		return sellData.listItens();
 	}
-	public void setPaymentMethod(String method, String Data) {
+	
+	/*public void setPaymentMethod(String method, String Data) {
 
 		if (method.equals("PIX")) {
 			Pix a = new Pix();
@@ -58,17 +60,17 @@ public class SellService {
 			a.TypeOfPayment(Data);
 			this.sellData.setPayment(a);
 
-		} else if (method.equals("CREDCARD")) {
+		} else if (method.equals("CARTAO_DE_CREDITO")) {
 			CredCard a = new CredCard();
 			a.TypeOfPayment(Data);
 			this.sellData.setPayment(a);
-		} else if (method.equals("DEBITO")) {
+		} else if (method.equals("CARTAO_DE_DEBITO")) {
 			Debit a = new Debit();
 			a.TypeOfPayment(Data);
 			this.sellData.setPayment(a);
 		}
 
-	}
+	}*/
 
 	public void cancel() {
 		sellData.refrestcard();
@@ -80,7 +82,7 @@ public class SellService {
 	}
 
 // falta fazer um método para quando cancelar a compra
-	public String sellStockTestAndBuy(StockService Stock, CashRegisterService cash) {
+	public String sellStockTestAndBuy(StockService Stock, CashRegisterService cash, String CPF, String PaymentMethod, String valueBancaryData) {
 		double priceToBil = 0d;
 		Object obj;
 		int negativeCount = productIncardToSell().size();
@@ -114,9 +116,10 @@ public class SellService {
 
 				}
 				// cash.setCashRegisterData(priceToBil);
-				sellData.save(priceToBil);
-				System.out.println(sellData.listItens());
-				sellData.refrestcard();
+			//	setPaymentMethod(PaymentMethod, valueBancaryData);
+				sellData.save(priceToBil,CPF, PaymentMethod,valueBancaryData );
+			//	System.out.println(sellData.listItens());
+			//	sellData.refrestcard();
 
 
 				return "Pedido realizado com sucesso";

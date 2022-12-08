@@ -50,8 +50,27 @@ public class Sell {
 		return paymentMethod;
 	}
 
-	public void setPaymentMethod(PaymentMethod paymentMethod) {
-		this.paymentMethod = paymentMethod;
+	public void setPaymentMethod(String method, String Data) {
+		
+		if (method.equals("PIX")) {
+			Pix a = new Pix();
+			a.TypeOfPayment(Data);
+			this.paymentMethod=a;
+
+		} else if (method.equals("DINHEIRO")) {
+			Cash a = new Cash();
+			a.TypeOfPayment(Data);
+			this.paymentMethod=a;
+
+		} else if (method.equals("CARTAO_DE_CREDITO")) {
+			CredCard a = new CredCard();
+			a.TypeOfPayment(Data);
+			this.paymentMethod=a;
+		} else if (method.equals("CARTAO_DE_DEBITO")) {
+			Debit a = new Debit();
+			a.TypeOfPayment(Data);
+			this.paymentMethod=a;
+		}
 	}
 
 	public void setDateTime() {
