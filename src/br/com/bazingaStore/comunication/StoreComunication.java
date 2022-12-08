@@ -50,26 +50,26 @@ public class StoreComunication {
 	}
 
 	public void secondMenu() {
-		System.out.println("1 - para listar Roupas do estoque");
+		System.out.println("1 - Listar Roupas do estoque");
 		System.out.println("2 - selecionar Roupas");
-		System.out.println("3 - para listar Roupas do carinho de compras");
-		System.out.println("4 - para Finalizar a compra");
-		System.out.println("5 - para cancelar a compra");
-		System.out.println("6 - para voltar ao menu anterior");
+		System.out.println("3 - Listar Roupas do carrinho de compras");
+		System.out.println("4 - Finalizar a compra");
+		System.out.println("5 - Cancelar a compra");
+		System.out.println("6 - Voltar ao menu anterior");
 	}
 
 	public void cpfMenu() {
 		System.out.println("Deseja salvar o CPF? ");
-		System.out.println("1 - para Sim");
-		System.out.println("2 - para nao");
-		System.out.println("3 - para voltar ao menu anterior");
+		System.out.println("1 - Sim");
+		System.out.println("2 - Nao");
+		System.out.println("3 - Voltar ao menu anterior");
 
 	}
 
 	public void cashRegisterMenu() {
-		System.out.println("1 - para verificar o caixa");
-		System.out.println("2 - para verificar o historico de compras");
-		System.out.println("3 - para voltar ao menu anterior");
+		System.out.println("1 - Verificar o caixa");
+		System.out.println("2 - Verificar o historico de compras");
+		System.out.println("3 - Voltar ao menu anterior");
 
 	}
 

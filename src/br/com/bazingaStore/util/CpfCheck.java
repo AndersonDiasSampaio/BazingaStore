@@ -7,11 +7,8 @@ public class CpfCheck {
 	}
 
 	public boolean cpfTest(String a) {
-		boolean h = true;
-		boolean k = true;
-		boolean l = true;
+		
 		String j = "";
-		String u = "";
 		String cpfEQ;
 		Integer sum, sum2;
 		j = a;
@@ -19,7 +16,6 @@ public class CpfCheck {
 		if (j.length() == 11) {
 			Integer q, w, e, r, t, y, i, o, p, dig1, dig2, digD1, digD2;
 			q = Integer.parseInt(j.substring(0, 1));
-			System.out.println(j.substring(0));
 			w = Integer.parseInt(j.substring(1, 2));
 			e = Integer.parseInt(j.substring(2, 3));
 			r = Integer.parseInt(j.substring(3, 4));
@@ -31,9 +27,7 @@ public class CpfCheck {
 			digD1 = Integer.parseInt(j.substring(9, 10));
 			digD2 = Integer.parseInt(j.substring(10, 11));
 
-			// digD2 = Integer.parseInt(j.substring(11, 11));
 			sum = p * 2 + o * 3 + i * 4 + y * 5 + t * 6 + r * 7 + e * 8 + w * 9 + q * 10;
-			System.out.println(sum);
 			if ((sum % 11) < 2) {
 				dig1 = 0;
 
