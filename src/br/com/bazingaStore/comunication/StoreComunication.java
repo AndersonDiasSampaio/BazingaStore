@@ -50,11 +50,12 @@ public class StoreComunication {
 	}
 
 	public void secondMenu() {
-		System.out.println("1 - para listar Roupas");
+		System.out.println("1 - para listar Roupas do estoque");
 		System.out.println("2 - selecionar Roupas");
-		System.out.println("3 - para Finalizar a compra");
-		System.out.println("4 - para cancelar a compra");
-		System.out.println("5 - para voltar ao menu anterior");
+		System.out.println("3 - para listar Roupas do carinho de compras");
+		System.out.println("4 - para Finalizar a compra");
+		System.out.println("5 - para cancelar a compra");
+		System.out.println("6 - para voltar ao menu anterior");
 	}
 
 	public void cpfMenu() {
@@ -128,7 +129,10 @@ public class StoreComunication {
 
 						System.out.println(sell.addProductCard(stock.returnProductInStock(this.sku), this.quantity));
 
-					} else if (value == 3) {
+					} else if(value==3) {
+						System.out.println(sell.productIncardToSell());
+					}
+					else if (value ==4 ) {
 						// EDITAR PRA O CPF SER SETADO VIA SELLSTOCKTESTANDBUY
 						String text;
 						String valueCPF = "", valueCardNumber, valueCardValidity, valueBancaryData = "";
@@ -202,10 +206,10 @@ public class StoreComunication {
 							}
 						}
 
-					} else if (value == 4) {
+					} else if (value == 5) {
 						System.out.println("Cancelando sua compra");
 						sell.cancel();
-					} else if (value == 5) {
+					} else if (value == 6) {
 						y = false;
 						System.out.println("Retornando ao menu anterior");
 
