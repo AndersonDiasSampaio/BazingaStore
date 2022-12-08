@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public enum Category {
-MASCULINO("Masc", 11), FEMININO("F", 12), INFANTIL("INF", 13), IDOSO("IDO", 14);
+MASCULINO("Masc", 11), FEMININO("FEM", 12), INFANTIL("INF", 13), IDOSO("IDO", 14);
 
 
 private String cod;

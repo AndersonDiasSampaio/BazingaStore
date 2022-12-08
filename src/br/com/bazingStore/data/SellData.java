@@ -92,10 +92,7 @@ public class SellData implements DataInterface {
 		this.sell.setCPF(a);
 	}
 
-	/*public void setPayment(PaymentMethod a) {
-		this.sell.setPaymentMethod(a);
 
-	}*/
 	public List<Product> listProduct() {
 
 		return this.sell.getProductList();
